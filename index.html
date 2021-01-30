@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
@@ -28,8 +27,8 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
-        <div class="booking-form">
+    <section id="booking-content" class="main-content container">
+        <div  class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -40,9 +39,9 @@
                 <input class="inp-style" type="text" name="" placeholder="New York, United States">
             </div>
             <div class="inputs">
-                <div class="input-group">
-                    <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                <div  class="input-group">
+                    <label for="">Departure</label>
+                    <input id="journey-from" class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -82,7 +81,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p id="total-price" >$00</p>
+                        <p id="subTotal-price" >$00</p>
                     </div>
                 </div>
 
@@ -104,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button onclick="btnClickable()" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -113,10 +112,27 @@
         </div>
     </section>
 
-    <!--Thank You-->
+
+<!-- New site section  -->
+    <section id="ticket-showing">
+        <h1>Congratulation</h1>
+       <h2>Your ticket is ready.</h2>
+       <p>Wishing you a safe journey and a relaxing vacation when you arrive! May your journey be free from stress and bring you home safely. Safe Travels!</p>
+
+    </section>
+
+
+
+  
     <script>
-        
-     
+
+        function btnClickable(){
+            document.getElementById('booking-content').style.display = 'none';
+            document.getElementById('ticket-showing').style.display= 'block';
+        }
+
+//   For Ticketclass increase and decrease Part:
+
         
         function handleTicketPrice(ticketClass,toIncrease ){
             const ticketClassInput = document.getElementById(ticketClass+'-count');
@@ -133,34 +149,30 @@
             if( ticketClass == 'firstClass'){
                 
                 firstClassPrice=  ticketClassNewCount *150 ;
-                document.getElementById('total-price').innerText = firstClassPrice ;
-
+                document.getElementById('subTotal-price').innerText = firstClassPrice ;
 
             taxTotal(firstClassPrice);
-                }
-            if( ticketClass == 'economyClass'){
-                    
-            economyClassPrice = ticketClassNewCount *100 ;
-            document.getElementById('total-price').innerText = economyClassPrice;
 
+                }
+
+            if( ticketClass == 'economyClass'){
+       
+            economyClassPrice = ticketClassNewCount *100 ;
+            document.getElementById('subTotal-price').innerText = economyClassPrice;
             taxTotal(economyClassPrice);
 
                 }
-                finalCalculate();
+             finalCalculate();
         }  
-
-
-
-
-           function finalCalculate(){
-                 
+ 
+//  Calculate Total Price in this part;
+           function finalCalculate(){            
               const finalTotal = firstClassPrice + economyClassPrice;
-              document.getElementById('total-price').innerText = finalTotal;
-
+              document.getElementById('subTotal-price').innerText = finalTotal;
               taxTotal(finalTotal);
            }
 
-
+// Calculate subtotal & taxTotal part :
         function taxTotal(valueSet){
 
             const tax =Math.round(valueSet * 0.1);
@@ -169,10 +181,9 @@
             const grandTotal = valueSet + tax;
             document.getElementById('grand-total').innerText = '$' + grandTotal;
             console.log(grandTotal);
-            
+
          }
-     
-       
+ 
      </script>
  </body>
 </html>

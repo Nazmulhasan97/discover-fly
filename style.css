@@ -127,3 +127,20 @@ nav ul li a:hover, a.active{
     background-color: #e4e4e4;
     margin: 3px;
 }
+#ticket-showing{
+    display: none;
+    margin: 8%;
+    width: 30%;
+    padding: 63px 12px;
+    background-color: rgb(211, 211, 212);
+    text-align: center;
+    box-shadow: 2px 3px 13px 5px #e0dddd6e;
+    border-radius: 8px;
+}
+#ticket-showing h1 {
+    color: rgb(221, 31, 196);
+    font-size: 36px;
+}
+#ticket-showing h2{
+    color: rgb(17, 180, 99);
+}
